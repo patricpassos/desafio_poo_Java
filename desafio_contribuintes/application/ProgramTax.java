@@ -10,16 +10,16 @@ import entities.TaxPayer;
 public class ProgramTax {
 
 	public static void main(String[] args) {
-		
+
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		
+
 		List<TaxPayer> payer = new ArrayList<>();
-		
+
 		System.out.print("How many taxpayers will you enter? ");
 		int n = sc.nextInt();
-		
-		for(int i = 0; i < n; i++) {
+
+		for (int i = 0; i < n; i++) {
 			System.out.printf("\nEnter the data for the %d° taxpayer:", i + 1);
 			System.out.print("\nAnnual income from salary: ");
 			double salaryIncome = sc.nextDouble();
@@ -31,21 +31,17 @@ public class ProgramTax {
 			double healthSpending = sc.nextDouble();
 			System.out.print("Educational expenses: ");
 			double educationSpending = sc.nextDouble();
-			
-			TaxPayer taxPayer = new TaxPayer(salaryIncome, servicesIncome, capitalIncome, healthSpending,educationSpending);
+
+			TaxPayer taxPayer = new TaxPayer(salaryIncome, servicesIncome, capitalIncome, healthSpending,
+					educationSpending);
 			payer.add(taxPayer);
 		}
-		
-		for(int i = 0; i < payer.size(); i++) {
-			System.out.printf("\nResumo do %d° contribuinte:", i + 1);
-			System.out.printf("\nImposto bruto total: %.2f", payer.get(i).grossTax());
-			System.out.printf("\nAbatimento: %.2f", payer.get(i).abatementTax());
+
+		for (int i = 0; i < payer.size(); i++) {
+			System.out.printf("\nSummary of the %d° taxpayer:", i + 1);
+			System.out.println(payer.get(i));
 		}
-		
-		//double test = TaxPayer.salaryTax(payer);
-		
-		
-		
+
 		sc.close();
 
 	}

@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.List;
-
 public class TaxPayer {
 	
 	private double salaryIncome;
@@ -58,16 +56,16 @@ public class TaxPayer {
 		this.educationSpending = educationSpending;
 	}
 	
+	private double monthlySalary() {
+	    return salaryIncome / 12.0;
+	}
+	
 	public boolean salaryTaxExempt() {
-		return salaryIncome / 12.0 < 3000.0;
+		return monthlySalary() < 3000.0;
 	}
 	
 	public boolean salaryTax10() {
-		return salaryIncome / 12.0 < 5000.0;
-	}
-	
-	public boolean salaryTax20() {
-		return salaryIncome / 12.0 > 5000.0;
+		return monthlySalary() < 5000.0;
 	}
 	
 	public double salaryTax() {
@@ -92,32 +90,22 @@ public class TaxPayer {
 		return salaryTax() + servicesTax() + capitalTax();
 	}
 	
-	public double deductibleExpenses() {
-		return healthSpending + educationSpending;
+	public double taxRebate() {
+		double deductibleExpenses = healthSpending + educationSpending;
+		double deductibleTax = grossTax() * 0.30;
+		return deductibleExpenses > deductibleTax ? deductibleTax : deductibleExpenses;
 	}
 	
-	public double abatementTax() {
-		if(deductibleExpenses() > grossTax()) {
-			return grossTax() * 0.30;
-		} else {
-			return deductibleExpenses();
-		}
+	public double netTax() {
+		return grossTax() - taxRebate();
 	}
 	
-	/*public static double salaryTax(List<TaxPayer> payer) {
-		double grossTax = 0.0;
-		for(TaxPayer teste : payer) {
-			if(teste.salaryTaxExempt()) {
-				return 0.0;
-			} else if (teste.salaryTax10()) {
-				return teste.getSalaryIncome() * 0.10;
-			} else {
-				return teste.getSalaryIncome() * 0.20;
-			}
-		}
-		return grossTax;
-	}*/
-	
-	
+	@Override
+	public String toString() {
+		return
+				"\nTotal gross tax: " + String.format("%.2f", grossTax())
+				+ "\nTax abatement: " + String.format("%.2f", taxRebate())
+				+ "\nTax due: " + String.format("%.2f", netTax());
+	}
 	
 }
