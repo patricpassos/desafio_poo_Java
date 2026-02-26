@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 public class TaxPayer {
 	
 	private double salaryIncome;
@@ -55,6 +57,66 @@ public class TaxPayer {
 	public void setEducationSpending(double educationSpending) {
 		this.educationSpending = educationSpending;
 	}
+	
+	public boolean salaryTaxExempt() {
+		return salaryIncome / 12.0 < 3000.0;
+	}
+	
+	public boolean salaryTax10() {
+		return salaryIncome / 12.0 < 5000.0;
+	}
+	
+	public boolean salaryTax20() {
+		return salaryIncome / 12.0 > 5000.0;
+	}
+	
+	public double salaryTax() {
+		if(salaryTaxExempt()) {
+			return 0.0;
+		} else if(salaryTax10()) {
+			return salaryIncome * 0.10;
+		} else {
+			return salaryIncome * 0.20;
+		}
+	}
+	
+	public double servicesTax() {
+		return servicesIncome * 0.15;
+	}
+	
+	public double capitalTax() {
+		return capitalIncome * 0.20;
+	}
+	
+	public double grossTax() {
+		return salaryTax() + servicesTax() + capitalTax();
+	}
+	
+	public double deductibleExpenses() {
+		return healthSpending + educationSpending;
+	}
+	
+	public double abatementTax() {
+		if(deductibleExpenses() > grossTax()) {
+			return grossTax() * 0.30;
+		} else {
+			return deductibleExpenses();
+		}
+	}
+	
+	/*public static double salaryTax(List<TaxPayer> payer) {
+		double grossTax = 0.0;
+		for(TaxPayer teste : payer) {
+			if(teste.salaryTaxExempt()) {
+				return 0.0;
+			} else if (teste.salaryTax10()) {
+				return teste.getSalaryIncome() * 0.10;
+			} else {
+				return teste.getSalaryIncome() * 0.20;
+			}
+		}
+		return grossTax;
+	}*/
 	
 	
 	

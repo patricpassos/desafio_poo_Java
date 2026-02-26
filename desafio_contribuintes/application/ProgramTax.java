@@ -36,6 +36,13 @@ public class ProgramTax {
 			payer.add(taxPayer);
 		}
 		
+		for(int i = 0; i < payer.size(); i++) {
+			System.out.printf("\nResumo do %d° contribuinte:", i + 1);
+			System.out.printf("\nImposto bruto total: %.2f", payer.get(i).grossTax());
+			System.out.printf("\nAbatimento: %.2f", payer.get(i).abatementTax());
+		}
+		
+		//double test = TaxPayer.salaryTax(payer);
 		
 		
 		
