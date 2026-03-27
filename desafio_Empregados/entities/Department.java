@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
-	
+
 	private String name;
 	private int payDay;
-	
+
 	private Address address;
 	private List<Employee> employees = new ArrayList<>();
-	
-	public Department() {}
+
+	public Department() {
+	}
 
 	public Department(String name, int payDay, Address address) {
 		this.name = name;
@@ -46,18 +47,18 @@ public class Department {
 	public List<Employee> getEmployees() {
 		return employees;
 	}
-	
+
 	public void addEmployee(Employee employee) {
 		employees.add(employee);
 	}
-	
+
 	public void removeEmployee(Employee employee) {
 		employees.remove(employee);
 	}
-	
+
 	public double payRoll() {
 		double totalSalary = 0.0;
-		for(Employee salaryEmployee : employees) {
+		for (Employee salaryEmployee : employees) {
 			totalSalary += salaryEmployee.getSalary();
 		}
 		return totalSalary;
