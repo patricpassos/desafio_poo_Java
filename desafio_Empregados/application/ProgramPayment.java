@@ -43,7 +43,7 @@ public class ProgramPayment {
 
 		for (int i = 0; i < quantityEmployees; i++) {
 			sc.nextLine();
-			System.out.printf("Employee data %d:\n", i + 1);
+			System.out.printf("\nEmployee data %d:\n", i + 1);
 			System.out.print("Name: ");
 			String name = sc.nextLine();
 			System.out.print("Salary: ");
