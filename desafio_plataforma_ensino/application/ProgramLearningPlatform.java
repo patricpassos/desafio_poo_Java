@@ -54,7 +54,7 @@ public class ProgramLearningPlatform {
 		for (Lesson duration : listLesson) {
 			durationCourse += duration.duration();
 		}
-
+		
 		System.out.printf("\nTOTAL COURSE DURATION = %d seconds", durationCourse);
 
 		sc.close();
