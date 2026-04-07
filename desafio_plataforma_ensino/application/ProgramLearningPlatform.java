@@ -49,12 +49,13 @@ public class ProgramLearningPlatform {
 				listLesson.add(task);
 			}
 		}
-		
+
 		int durationCourse = 0;
-		for(Lesson duration : listLesson) {
+		for (Lesson duration : listLesson) {
 			durationCourse += duration.duration();
-			System.out.printf("\nTOTAL COURSE DURATION = %d", durationCourse);
 		}
+
+		System.out.printf("\nTOTAL COURSE DURATION = %d seconds", durationCourse);
 
 		sc.close();
 
