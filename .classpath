@@ -9,5 +9,7 @@
 	<classpathentry kind="src" path="desafio_combate"/>
 	<classpathentry kind="src" path="desafio_contribuintes"/>
 	<classpathentry kind="src" path="desafio_Empregados"/>
+	<classpathentry kind="src" path="desafio_plataforma_ensino"/>
+	<classpathentry kind="src" path="desafio_analise_vendas"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
