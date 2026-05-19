@@ -18,7 +18,7 @@ public class salesAnalysis {
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		//C:\Temp\bd_sale.csv
+		
 		System.out.print("Enter the file path: ");
 		String path = sc.nextLine();
 		
@@ -38,10 +38,10 @@ public class salesAnalysis {
 			}
 			
 			Map<String, Double> totalSaller = listSales.stream()
-					.collect(Collectors.groupingBy(x -> x.getSeller(), Collectors.summingDouble(y -> y.getTotal())));
-					
-			totalSaller.forEach((seller, total) -> System.out.println(seller + " - " + total));
+					.collect(Collectors.groupingBy(s -> s.getSeller(), Collectors.summingDouble(t -> t.getTotal())));
 			
+			System.out.println("\nTotal sales per salesperson");
+			totalSaller.forEach((seller, total) -> System.out.printf(seller + " - R$ %.2f\n", total));
 			
 		} catch(IOException e) {
 			System.out.println("Error: " + e.getMessage());
